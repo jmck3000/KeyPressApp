@@ -13,10 +13,15 @@ namespace KeyPressApp.Test
     public class ManagerShould
     {
 
+        Manager _sut;
+
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            
+            var mockIKeyPress = new Mock<IKeyPress>();
+            var mockILogger = new Mock<ILogger>();
+
+            _sut = new Manager(mockIKeyPress.Object, mockILogger.Object);
         }
 
         [OneTimeTearDown]
@@ -32,25 +37,25 @@ namespace KeyPressApp.Test
         [Test]
         public void GivingThatAnAppIsNotRunning()
         {
-            var mockIKeyPress = new Mock<IKeyPress>();
-            var mockILogger = new Mock<ILogger>();
+            //var mockIKeyPress = new Mock<IKeyPress>();
+            //var mockILogger = new Mock<ILogger>();
 
-            var sut = new Manager(mockIKeyPress.Object, mockILogger.Object);
+            //var sut = new Manager(mockIKeyPress.Object, mockILogger.Object);
 
-            Assert.That(sut.IsAppRunning("MyDummy.app"), Is.False);
+            Assert.That(_sut.IsAppRunning("MyDummy.app"), Is.False);
         }
 
         [Test]
         public void GivingThatAnAppIsRunning()
         {
-            var mockIKeyPress = new Mock<IKeyPress>();
-            var mockILogger = new Mock<ILogger>();
+            //var mockIKeyPress = new Mock<IKeyPress>();
+            //var mockILogger = new Mock<ILogger>();
 
-            var sut = new Manager(mockIKeyPress.Object, mockILogger.Object);
+            //var sut = new Manager(mockIKeyPress.Object, mockILogger.Object);
 
             Process.Start("notepad.exe");
 
-            Assert.That(sut.IsAppRunning("notepad"), Is.True);
+            Assert.That(_sut.IsAppRunning("notepad"), Is.True);
         }
 
 
@@ -62,9 +67,7 @@ namespace KeyPressApp.Test
 
             mockILogger.Setup(x => x.LogText).Returns("Hello Wrold");
 
-
             var sut = new Manager(mockIKeyPress.Object, mockILogger.Object);
-
 
             Assert.That(sut.GetLog(), Is.EqualTo("Hello Wrold"));
         }
