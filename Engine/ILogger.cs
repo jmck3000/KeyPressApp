@@ -3,9 +3,7 @@
     public interface ILogger
     {
         string LogText { get; set; }
-
-        string WriteLog(string textLine);
-
+        void WriteLog(string textLine);
         void ClearLog();
     }
 }
