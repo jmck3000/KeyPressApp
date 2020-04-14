@@ -18,10 +18,4 @@
     <ProjectReference Include="..\KeyPressApp.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="TextFileTest.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
