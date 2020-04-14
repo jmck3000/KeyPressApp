@@ -55,22 +55,18 @@ namespace KeyPressApp.Test
 
 
         [Test]
-        [Ignore("Not complete.")]
         public void GetLogIsText()
         {
             var mockIKeyPress = new Mock<IKeyPress>();
             var mockILogger = new Mock<ILogger>();
 
-            mockILogger.Setup(x => x.WriteLog("Hello Wrold"));
+            mockILogger.Setup(x => x.LogText).Returns("Hello Wrold");
 
 
             var sut = new Manager(mockIKeyPress.Object, mockILogger.Object);
 
-           // var test = sut.Log("Hello Wrold");
 
-
-
-            Assert.That(sut.IsAppRunning("notepad"), Is.True);
+            Assert.That(sut.GetLog(), Is.EqualTo("Hello Wrold"));
         }
 
 
