@@ -15,14 +15,13 @@ namespace KeyPressApp.Engine
             LogText = "";
         }
 
-        public string WriteLog(string textLine)
+        public void WriteLog(string textLine)
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(LogText);
             stringBuilder.Append("\r\n");
             stringBuilder.Append(textLine);
             LogText = stringBuilder.ToString();
-            return LogText;
         }
 
         public void ClearLog()
