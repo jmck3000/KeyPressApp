@@ -37,22 +37,12 @@ namespace KeyPressApp.Test
         [Test]
         public void GivingThatAnAppIsNotRunning()
         {
-            //var mockIKeyPress = new Mock<IKeyPress>();
-            //var mockILogger = new Mock<ILogger>();
-
-            //var sut = new Manager(mockIKeyPress.Object, mockILogger.Object);
-
             Assert.That(_sut.IsAppRunning("MyDummy.app"), Is.False);
         }
 
         [Test]
         public void GivingThatAnAppIsRunning()
         {
-            //var mockIKeyPress = new Mock<IKeyPress>();
-            //var mockILogger = new Mock<ILogger>();
-
-            //var sut = new Manager(mockIKeyPress.Object, mockILogger.Object);
-
             Process.Start("notepad.exe");
 
             Assert.That(_sut.IsAppRunning("notepad"), Is.True);
